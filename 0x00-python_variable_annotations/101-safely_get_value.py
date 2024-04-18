@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 from typing import Mapping, Any, Union, TypeVar
+"""
+    `typing` module: Type hints for readable, maintainable code
+"""
 
 
 T = TypeVar('T')
