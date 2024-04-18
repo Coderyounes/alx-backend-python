@@ -10,7 +10,7 @@ T = TypeVar('T')
 
 def safely_get_value(dct: Mapping,
                      key: Any,
-                     default: Union[Any, T] = None) -> Union[Any, T]:
+                     default: Union[T, None] = None) -> Union[Any, T]:
     """
     Safely retrieves the value associated with
     the given key from the dictionary.
