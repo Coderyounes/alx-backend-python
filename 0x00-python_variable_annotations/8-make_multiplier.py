@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from typing import Callable
 """
     `typing` module: Type hints for readable, maintainable code
 """
+from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:

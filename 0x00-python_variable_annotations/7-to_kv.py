@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from typing import Union, Tuple
 """
     `typing` module: Type hints for readable, maintainable code
 """
+from typing import Union, Tuple
 
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
