@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./0-",
+        "./0-"
+    ]
+}
