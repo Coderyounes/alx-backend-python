@@ -2,10 +2,10 @@
 """ Documnetation """
 import asyncio
 import random
-from typing import AsyncGenerator
+from typing import Generator
 
 
-async def async_generator() -> AsyncGenerator:
+async def async_generator() -> Generator[float, None, None]:
     """
     Asynchronous generator that yields
     random floating-point numbers between 0 and 10.
