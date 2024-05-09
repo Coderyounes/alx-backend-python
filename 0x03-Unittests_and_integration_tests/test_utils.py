@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """ unittest: use parameterized to make it easy"""
 import unittest
-import requests
 from unittest.mock import patch, Mock
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -88,3 +87,14 @@ class TestGetJson(unittest.TestCase):
             mock_get.assert_called_once_with(url)
 
             self.assertEqual(res, payload)
+
+class TestMemoize(unittest.TestCase):
+    def test_memoize(self):
+        class TestClass:
+
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
