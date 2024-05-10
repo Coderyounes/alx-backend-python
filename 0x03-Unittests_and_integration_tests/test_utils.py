@@ -88,6 +88,7 @@ class TestGetJson(unittest.TestCase):
 
             self.assertEqual(res, payload)
 
+
 class TestMemoize(unittest.TestCase):
     def test_memoize(self):
         class TestClass:
@@ -98,3 +99,9 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock:
+            testcls = TestClass()
+            testcls.a_property()
+            testcls.a_property()
+            mock.assert_called_once()
