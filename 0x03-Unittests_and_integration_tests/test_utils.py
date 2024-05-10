@@ -95,6 +95,14 @@ class TestMemoize(unittest.TestCase):
     """
 
     def test_memoize(self):
+        """
+        Test case for the memoize decorator.
+
+        This test case verifies that the memoize
+        decorator correctly caches the result
+        of a method call and returns the cached
+        result on subsequent calls.
+        """
         class TestClass:
 
             def a_method(self):
