@@ -9,6 +9,9 @@ from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
+    """
+    Test class for the GithubOrgClient.
+    """
 
     @parameterized.expand([
         ('google'),
@@ -16,6 +19,16 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     @patch('client.get_json')
     def test_org(self, data, mock):
+        """
+        Test the org method of the GithubOrgClient class.
+
+        Args:
+            data (str): The name of the organization.
+            mock (MagicMock): The mock object used to assert the API call.
+
+        Returns:
+            None
+        """
         tstcls = GithubOrgClient(data)
         tstcls.org()
         mock.assert_called_once_with(f'https://api.github.com/orgs/{data}')
