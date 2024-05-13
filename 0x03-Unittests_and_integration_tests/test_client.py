@@ -35,14 +35,13 @@ class TestGithubOrgClient(unittest.TestCase):
         tstcls.org()
         mock.assert_called_once_with(f'https://api.github.com/orgs/{data}')
 
-
     def test_public_repos_url(self):
-        """ 
+        """
         Test that the result of _public_repos_url is the expected one
         based on the mocked payload.
         """
         with patch('client.GithubOrgClient.org',
-            new_callable=PropertyMock) as mock:
+                   new_callable=PropertyMock) as mock:
             payload = {"repos_url": "World"}
             mock.return_value = payload
             test_class = GithubOrgClient('test')
@@ -95,12 +94,14 @@ class TestGithubOrgClient(unittest.TestCase):
         result = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(result, expected)
 
-
     @parameterized_class(
-    ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
-    TEST_PAYLOAD
+        ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
+        TEST_PAYLOAD
     )
     class TestIntegrationGithubOrgClient(unittest.TestCase):
+        """
+        Integration test class for the GithubOrgClient class.
+        """
 
         @classmethod
         def setUpClass(cls):
@@ -111,11 +112,8 @@ class TestGithubOrgClient(unittest.TestCase):
                 None
             """
             config = {'return_value.json.side_effect':
-                    [
-                        cls.org_payload, cls.repos_payload,
-                        cls.org_payload, cls.repos_payload
-                    ]
-                    }
+                      [cls.org_payload, cls.repos_payload,
+                       cls.org_payload, cls.repos_payload]}
             cls.get_patcher = patch('requests.get', **config)
 
             cls.mock = cls.get_patcher.start()
@@ -137,7 +135,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
         def test_public_repos_with_license(self):
             """
-            Integration test for the public_repos method with a specific license.
+            Integration test for
+            the public_repos method with a specific license.
 
             Returns:
                 None
